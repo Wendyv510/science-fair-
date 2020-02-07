@@ -22,18 +22,18 @@ class ApplicationController < Sinatra::Base
     user = User.new(:name => params[:name], :email => params[:email], :password => params[:password]) 
     
     if user.save
-      redirect to '/user/login' 
+      redirect to '/user/signin' 
     else 
       redirect to '/user/failure' 
     end 
   end 
   
-  get '/login' do 
+  get '/signin' do 
     
-    erb :'/user/login' 
+    erb :'/user/signin' 
   end 
   
-  post "/login" do 
+  post "/signin" do 
     user = User.find_by(:email => params[:email]) 
     
       if user && user.authenticate(params[:password])
@@ -62,7 +62,7 @@ class ApplicationController < Sinatra::Base
   end 
   
   post '/students' do 
-    @student = Student.create(:name => params[:name], :grade_level params[:grade_level], :project => params[:project])
+    @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
     @student.save 
     redirect to "/students/#{@student.id}"
   end 
