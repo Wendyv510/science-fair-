@@ -61,7 +61,7 @@ class ApplicationController < Sinatra::Base
     erb :'/students/new' 
   end 
   
-  post '/students' do 
+  post '/students/new' do 
     @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
     @student.save 
     redirect to "/students/#{@student.id}"
@@ -69,7 +69,7 @@ class ApplicationController < Sinatra::Base
   
   get '/students/:id' do 
     @student = Student.find_by_id(params[:id]) 
-       erb :show 
+       erb :'/students/show' 
   end 
   
   get '/students/:id/edit' do 
