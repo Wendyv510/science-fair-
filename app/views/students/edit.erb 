@@ -1,0 +1,11 @@
+<form action="/students/<%= @student.id %> method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch"> 
+  
+  <input type="text" name="name"> 
+  <input type="text" name="grade_level"> 
+  <input type="text" name="project"> 
+  
+  <input type="submit" value="Submit" 
+</form> 
+
+
