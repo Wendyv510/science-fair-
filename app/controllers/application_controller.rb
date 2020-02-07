@@ -26,6 +26,23 @@ class ApplicationController < Sinatra::Base
     else 
       redirect to '/user/failure' 
     end 
-  end    
+  end 
+  
+  get '/user/login' do 
+    
+    erb :'/user/login' 
+  end 
+  
+  post "/user/login" do 
+    user = User.find_by(:email => params[:email]) 
+    
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id 
+          redirect to '/student/new'
+      else 
+          redirect to '/user/failure' 
+      end 
+  end 
+      
 
 end
