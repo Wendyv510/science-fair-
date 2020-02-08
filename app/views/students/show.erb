@@ -1,19 +1,19 @@
 
 
-<h1> Students Name: <%= @student.name %> </h1>
-<h3> Grade level: <%= @student.grade_level %> </h3>
-<h3> Project: <%= @student.project %> </h3>
+<h3> Students Name: <%= @student.name %> </h3>
+<h4> Grade level: <%= @student.grade_level %> </h4>
+<h4> Project: <%= @student.project %> </h4>
 
 <br><br>
 
 <h6> To edit information input changes here </h6>
-<form action="/students/<%= @student.id %>/edit method="post">
+<form action="/students/<%= @student.id %>/edit" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="text" name="name"> 
-  <input type="text" name="grade_level"> 
-  <input type="text" name="project"> 
+  Name:<input type="text" name="name"> 
+  Grade_level:<input type="text" name="grade_level"> 
+  Project:<input type="text" name="project"> 
   
-  <input type="submit" value="Edit" 
+  <input type="submit" value="Edit"> 
 </form> 
 
 

@@ -31,10 +31,10 @@ class StudentController < Sinatra::Base
   
   get '/students/:id/edit' do 
     @student = Student.find_by_id(params[:id]) 
-       erb :edit 
+       erb :'/students/show' 
   end 
   
-  patch '/students/:id' do 
+  patch '/students/:id/edit' do 
     @student = Student.find_by_id(params[:id]) 
     @student.name = params[:name] 
     @student.grade_level = params[:grade_level] 

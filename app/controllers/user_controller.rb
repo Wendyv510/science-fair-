@@ -36,7 +36,7 @@ class UserController < Sinatra::Base
     
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id 
-          redirect to '/student/new'
+          erb :'/students/new'
       else 
           redirect to '/user/failure' 
       end 
