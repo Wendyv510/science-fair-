@@ -26,7 +26,7 @@ class UserController < Sinatra::Base
     end 
   end 
   
-  get '/signin' do 
+  get '/user/signin' do 
     
     erb :'/user/signin' 
   end 
@@ -40,6 +40,10 @@ class UserController < Sinatra::Base
       else 
           redirect to '/user/failure' 
       end 
+  end 
+  
+  get "/user/failure" do
+      erb :'/user/failure' 
   end 
   
   get '/logout' do 

@@ -11,7 +11,7 @@ class StudentController < Sinatra::Base
   
   get '/students' do 
     @students = Student.all 
-      erb :index 
+      erb :'/students/index' 
   end 
   
   get '/students/new' do 
