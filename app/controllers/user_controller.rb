@@ -17,7 +17,7 @@ class UserController < Sinatra::Base
   end 
   
   post '/signup' do 
-    user = User.new(:name => params[:name], :email => params[:email], :password => params[:password]) 
+    @user = User.new(:name => params[:name], :email => params[:email], :password => params[:password]) 
     
     if user.save
       redirect to '/user/signin' 
@@ -32,11 +32,11 @@ class UserController < Sinatra::Base
   end 
   
   post "/signin" do 
-    user = User.find_by(:email => params[:email]) 
+    @user = User.find_by(:email => params[:email]) 
     
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id 
-          erb :'/students/new'
+          erb :'/user/show'
       else 
           redirect to '/user/failure' 
       end 
