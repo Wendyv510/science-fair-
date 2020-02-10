@@ -1,6 +1,9 @@
+<h1> All students enrolled for the 2020 Sinatra Central School Districts Science Fair</h1>
+
+<br><br><br>
 
 <% @students.each do |student| %> 
-  <%= student.name %> <br>
-  <%= student.grade_level %> <br>
-  <%= student.project %><br><br><br>
+  Name: <%= student.name %> <br>
+  Grade: <%= student.grade_level %>  <br>
+  Project: <%= student.project %><br><br><br>
 <% end %> 
