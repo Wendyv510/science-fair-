@@ -19,19 +19,19 @@ class UserController < Sinatra::Base
   post '/signup' do 
     @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password]) 
     
-    if user.save
+    if @user.persisted?
       redirect to '/user/signin' 
     else 
-      redirect to '/user/failure' 
+      @user.save 
     end 
   end 
   
-  get '/signin' do 
+  get '/user/signin' do 
     
     erb :'/user/signin' 
   end 
   
-  post "/signin" do 
+  post "/user/signin" do 
     @user = User.find_by(:email => params[:email]) 
     
       if @user && @user.authenticate(params[:password])
@@ -52,6 +52,10 @@ class UserController < Sinatra::Base
     else 
       redirect to '/' 
     end 
+  end 
+  
+  post '/logout' do 
+    redirect to '/' 
   end 
   
 end 

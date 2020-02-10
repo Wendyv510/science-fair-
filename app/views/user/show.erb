@@ -1,3 +1,14 @@
 <h1> Welcome <%= @user.name %> </h1>
 
 
+<form action="/students" method="post"> 
+    <input type="submit" value="View Students">
+</form>
+
+<form action="/students/new" method="post"> 
+    <input type="submit" value="Enroll new student/Edit existing student"> 
+</form>
+
+<form action="/logout" method="post"> 
+   <input type="submit" value="Logout"> 
+</form>

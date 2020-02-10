@@ -14,14 +14,22 @@ class StudentController < Sinatra::Base
       erb :'/students/index' 
   end 
   
+  post '/students' do 
+    redirect to '/students' 
+  end 
+  
   get '/students/new' do 
     erb :'/students/new' 
   end 
   
   post '/students/new' do 
     @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-    @student.save 
-    redirect to "/students/#{@student.id}"
+      redirect to '/students/new' 
+    if @student.persisted?
+        redirect to "/students/#{@student.id}"
+    else 
+        @student.save
+    end 
   end 
   
   get '/students/:id' do 
