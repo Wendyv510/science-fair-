@@ -24,8 +24,11 @@ class StudentController < Sinatra::Base
   
   post '/students/new' do 
     @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-    if @student.persisted?
-        redirect to "/students/#{@student.id}"
+    if :name = "" || :grade_level = "" || :project = "" 
+          redirect to "/students/new" 
+    elsif 
+        @student.persisted?
+          redirect to "/students/#{@student.id}"
     else 
         @student.save
     end 
