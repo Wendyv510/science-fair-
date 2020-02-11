@@ -14,9 +14,10 @@
 ActiveRecord::Schema.define(version: 20200206214936) do
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.string "grade_level"
-    t.string "project"
+    t.string  "name"
+    t.string  "grade_level"
+    t.string  "project"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

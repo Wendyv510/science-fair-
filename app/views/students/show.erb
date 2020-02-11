@@ -8,6 +8,9 @@
 
 <br><br>
 
+
+<% if @student.user.id=current_user %> 
+
 <h6> To edit information input changes here </h6>
 <form action="/students/<%= @student.id %>/edit" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
@@ -27,7 +30,7 @@
 
 <br><br>
 
-
+<% end %>
 
 <form action="/students" method="post"> 
     <input type="submit" value="View Students">

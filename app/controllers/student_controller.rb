@@ -10,7 +10,7 @@ class StudentController < Sinatra::Base
   end
   
   get '/students' do 
-    @students = Student.where(session[:user_id] == @user.id)
+    @students = Student.all
       erb :'/students/index' 
   end 
   
@@ -23,15 +23,24 @@ class StudentController < Sinatra::Base
   end 
   
   post '/students/new' do 
-    @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-    if :name = "" || :grade_level = "" || :project = "" 
-          redirect to "/students/new" 
-    elsif 
-        @student.persisted?
-          redirect to "/students/#{@student.id}"
-    else 
-        @student.save
-    end 
+  #  @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
+  #  if :name = "" || :grade_level = "" || :project = "" 
+  #        redirect to "/students/new" 
+  #  elsif 
+  #      @student.persisted?
+  #        redirect to "/students/#{@student.id}"
+  #  else 
+  #      @student.save
+  #  end 
+  
+   user = Helpers.current_user(session) 
+     if params[:name][:grade_level][:project].empty? 
+       redirect to "/students/new" 
+     else 
+       user.student.build({name: params[:name], grade_level: params[:grade_level], project: params[:project]})
+       user.save 
+     end
+     redirect to "/students" 
   end 
   
   get '/students/:id' do 

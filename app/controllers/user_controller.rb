@@ -26,7 +26,7 @@ class UserController < Sinatra::Base
     end 
   end 
   
-  get '/signin' do 
+  get '/user/signin' do 
     
     erb :'/user/signin' 
   end 

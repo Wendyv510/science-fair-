@@ -4,6 +4,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :name 
       t.string :grade_level 
       t.string :project 
+      t.integer :user_id 
     end 
   end
 end
