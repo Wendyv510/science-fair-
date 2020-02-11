@@ -10,7 +10,7 @@ class StudentController < Sinatra::Base
   end
   
   get '/students' do 
-    @students = Student.all 
+    @students = Student.where(session[:user_id] == @user.id)
       erb :'/students/index' 
   end 
   
@@ -24,7 +24,6 @@ class StudentController < Sinatra::Base
   
   post '/students/new' do 
     @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-      redirect to '/students/new' 
     if @student.persisted?
         redirect to "/students/#{@student.id}"
     else 

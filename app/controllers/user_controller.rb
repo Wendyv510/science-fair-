@@ -26,12 +26,12 @@ class UserController < Sinatra::Base
     end 
   end 
   
-  get '/user/signin' do 
+  get '/signin' do 
     
     erb :'/user/signin' 
   end 
   
-  post "/user/signin" do 
+  post "/signin" do 
     @user = User.find_by(:email => params[:email]) 
     
       if @user && @user.authenticate(params[:password])
