@@ -23,21 +23,20 @@ class StudentController < Sinatra::Base
   end 
   
   post '/students/new' do 
-  #  @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-  #  if :name = "" || :grade_level = "" || :project = "" 
-  #        redirect to "/students/new" 
-  #  elsif 
-  #      @student.persisted?
-  #        redirect to "/students/#{@student.id}"
-  #  else 
-  #      @student.save
-  #  end 
+   @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
+     if @student
+          redirect to "/students/#{@student.id}"
+     else 
+        @student.save
+     end 
   
    user = Helpers.current_user(session) 
-     if params[:name][:grade_level][:project].empty? 
-       redirect to "/students/new" 
+     if params[:name]="" || params[:grade_level]="" ||params[:project]="" 
+       #redirect to "/students/new" 
+       "All fields must be filled in!"
      else 
-       user.student.build({name: params[:name], grade_level: params[:grade_level], project: params[:project]})
+      # user.student.build({name: params[:name], grade_level: params[:grade_level], project: params[:project]})
+      user.student.build(params)
        user.save 
      end
      redirect to "/students" 

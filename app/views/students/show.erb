@@ -9,7 +9,7 @@
 <br><br>
 
 
-<% if @student.user.id=current_user %> 
+<% if @student.user_id = @user %> 
 
 <h6> To edit information input changes here </h6>
 <form action="/students/<%= @student.id %>/edit" method="post">
