@@ -20,13 +20,13 @@ class UserController < Sinatra::Base
     @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password]) 
     
     if @user.persisted?
-      redirect to '/user/signin' 
+      redirect to '/signin' 
     else 
       @user.save 
     end 
   end 
   
-  get '/user/signin' do 
+  get '/signin' do 
     
     erb :'/user/signin' 
   end 
