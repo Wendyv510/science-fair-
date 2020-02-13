@@ -24,21 +24,31 @@ class StudentController < Sinatra::Base
   
   post '/students/new' do
      redirect to "/students/new" 
-   @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-   @student.save
-      redirect to "/students/#{@student.id}"
+  # @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
+  # @student.save
+  #    redirect to "/students/#{@student.id}"
   
-   @user = Helpers.current_user(session) 
-     if params[:name]="" || params[:grade_level]="" ||params[:project]="" 
-       #redirect to "/students/new" 
+  # @user = Helpers.current_user(session) 
+  #   if params[:name]="" || params[:grade_level]="" || params[:project]="" 
+   #    "All fields must be filled in!"
+  #   else 
+  #    @user.student.build(params)
+  #    @user.save 
+  #   end
+  #   redirect to "/students"
+  
+      @user = Helpers.current_user(session)
+      @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
+     if params[:name]="" || params[:grade_level]="" || params[:project]="" 
        "All fields must be filled in!"
      else 
-      # user.student.build({name: params[:name], grade_level: params[:grade_level], project: params[:project]})
+      @student.save
       @user.student.build(params)
       @user.save 
-     end
-     redirect to "/students" 
+          redirect to "/students/#{@student.id}"
+     end 
   end 
+  
   
   get '/students/:id' do 
     @student = Student.find_by_id(params[:id]) 

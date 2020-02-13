@@ -1,4 +1,7 @@
-User.new{name:"Mrs. Emily Jones", email:"ejones@scs.org", password:"glitter123", password_confirmation:"glitter123"} 
+require_relative './app/models/student'
+require_relative './app/models/user' 
+
+User.new{name:"Mrs. Elaine Jones", email:"ejones@scs.org", password:"glitter123", password_confirmation:"glitter123"} 
 Student.new{name:"John Canon", grade_level:"9th", project:"Gravity"} 
 Student.new{name:"Sarah Johnson", grade_level:"9th", project:"How a camera works"}
 Student.new{name:"Mike Gustof", grade_level:"9th", project:"Precipitation"} 
