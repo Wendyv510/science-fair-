@@ -9,9 +9,9 @@
 <br><br>
 
 
-<% if @student.user_id = @user %> 
+<% if @student.user_id = Helpers.current_user(session) %> 
 
-<h6> To edit information input changes here </h6>
+ <h6> To edit information input changes here </h6>
 <form action="/students/<%= @student.id %>/edit" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   Name:<input type="text" name="name"> 
@@ -26,7 +26,7 @@
 <form action="/students/ <%= @student.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete"> 
   <input type="submit" value="Delete"> 
-</form> 
+</form>
 
 <br><br>
 
