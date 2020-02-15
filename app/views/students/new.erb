@@ -3,19 +3,21 @@
 
 <br><br><br>
 
-<%= "Must include Students name, grade level, and project." 
-      if @student && @student.errors.any?
-      end %> 
 
 <form action="/students/new" method="post"> 
    <label for="students_name"> Students Name: </label>
-     <input type="text" id="students_name" name="name"><br>
+     <input type="text" id="students_name" name="name" required><br>
      
    <label for="grade_level"> Grade level: </label>
-     <input type="text" id="grade_level" name="grade_level"><br>
+     <select name="grade_level" required>
+       <option value="9th"> 9th </option>
+       <option value="10th"> 10th </option>
+       <option value="11th"> 11th </option>
+       <option value="12th"> 12th </option>
+       
      
    <label for="project"> Project: </label>
-     <input type="text" id="project" name="project"><br>
+     <input type="text" id="project" name="project" required><br>
      
        <input type="submit" value="Submit"> 
 </form>
