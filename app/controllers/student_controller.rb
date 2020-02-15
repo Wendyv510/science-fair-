@@ -40,11 +40,7 @@ class StudentController < Sinatra::Base
   
   get '/students/:id/edit' do
     @student = Student.find_by_id(params[:id]) 
-      if @student = User.student.find_by(params[:id])
        erb :'/students/show' 
-      else 
-        redirect to "/students" 
-      end 
   end 
   
   patch '/students/:id/edit' do 

@@ -1,5 +1,4 @@
-require_relative './app/models/student'
-require_relative './app/models/user' 
+
 
 User.new{name:"Mrs. Elaine Jones", email:"ejones@scs.org", password:"glitter123", password_confirmation:"glitter123"} 
 Student.new{name:"John Canon", grade_level:"9th", project:"Gravity"} 
