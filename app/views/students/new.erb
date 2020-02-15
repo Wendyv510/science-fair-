@@ -3,6 +3,9 @@
 
 <br><br><br>
 
+<%= "Must include Students name, grade level, and project." 
+      if @student && @student.errors.any? %> 
+
 <form action="/students/new" method="post"> 
    <label for="students_name"> Students Name: </label>
      <input type="text" id="students_name" name="name"><br>

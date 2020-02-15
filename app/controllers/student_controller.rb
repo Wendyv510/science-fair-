@@ -24,11 +24,10 @@ class StudentController < Sinatra::Base
   
   post '/students/new' do
    @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-         redirect to "students/new"
-     if params[:name][:grade_level][:project].empty? 
-          "All fields must be filled in." 
-     else 
-          redirect to "/students/#{@student.id}"
+      if @student.save 
+          redirect to "/students/#{@student.id}/edit"
+      else 
+        erb :'/students/new' 
      end 
   end 
   
@@ -39,8 +38,11 @@ class StudentController < Sinatra::Base
   end 
   
   get '/students/:id/edit' do 
-    @student = Student.find_by_id(params[:id]) 
+      if @student = @user.students.find_by(params[:id])
        erb :'/students/show' 
+      else 
+        redirect to "/students" 
+      end 
   end 
   
   patch '/students/:id/edit' do 
