@@ -23,10 +23,11 @@ class StudentController < Sinatra::Base
   end 
   
   post '/students/new' do
-   @student = Student.create(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-      if @student.save 
+   @student = Student.find_or_create_by(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
+     @student.save 
           redirect to "/students/#{@student.id}/edit"
-      else 
+      if 
+        @student.errors.any?
         erb :'/students/new' 
      end 
   end 
@@ -37,8 +38,9 @@ class StudentController < Sinatra::Base
        erb :'/students/show' 
   end 
   
-  get '/students/:id/edit' do 
-      if @student = @user.students.find_by(params[:id])
+  get '/students/:id/edit' do
+    @student = Student.find_by_id(params[:id]) 
+      if @student = User.student.find_by(params[:id])
        erb :'/students/show' 
       else 
         redirect to "/students" 
