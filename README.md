@@ -1,4 +1,4 @@
-<h1> Sinatra Central School Science Fair of 2020 </h1>
+<h1> Sinatra High School Science Fair of 2020 </h1>
 
 <h4> Installation: </h4>
    <p>To use the science fair app, in terminal ... <br>
@@ -6,6 +6,7 @@
    -cd science-fair- <br>
    -bundle install <br>
    -rake db:migrate <br>
+   -rake db:seed <br> 
    -shotgun and open in browser </p>
    
 <h4> Description: </h4>
