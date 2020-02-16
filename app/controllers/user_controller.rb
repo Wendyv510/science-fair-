@@ -18,10 +18,7 @@ class UserController < Sinatra::Base
   
   post '/signup' do 
     @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])
-    if !params[:student][:name].empty?
-      @user.student << Student.create(name: params[:student][:name])
-    end 
-      @user.save 
+  
       redirect to '/signin' 
   end 
   
