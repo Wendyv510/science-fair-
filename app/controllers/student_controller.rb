@@ -24,7 +24,7 @@ class StudentController < Sinatra::Base
   
   post '/students/new' do
    @student = Student.find_or_create_by(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
-   @student.user = User.current_user(session) 
+   @student.user_id = User.current_user(session) 
    @student.save 
        redirect to "/students/#{@student.id}/edit"
   end 
@@ -37,7 +37,7 @@ class StudentController < Sinatra::Base
   
   get '/students/:id/edit' do
        @student = Student.find_by_id(params[:id]) 
-    if @student == User.current_user(session).students  
+    if @student.user = User.current_user(session)  
        erb :'/students/show'
     else 
       redirect to "/students" 
@@ -55,7 +55,7 @@ class StudentController < Sinatra::Base
   
   delete '/students/:id' do 
     @student = Student.find_by_id(params[:id]) 
-    if @student.user = User.current_user(session) 
+    if @student.user_id = User.current_user(session) 
     @student.delete  
        redirect to '/students' 
     end 

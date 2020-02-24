@@ -1,8 +1,9 @@
 
 
 Mrs_Elaine_Jones = User.create(name:"Mrs. Elaine Jones", email:"ejones@scs.org", password:"glitter123") 
-Mrs_Elaine_Jones.students.build(name:"John Canon", grade_level:"9th", project:"Gravity")
-Mrs_Elaine_Jones.students.save 
+John_Canon = Student.new(name:"John Canon", grade_level:"9th", project:"Gravity")
+John_Canon.user_id = Mrs_Elaine_Jones.id 
+John_Canon.save 
 
 
 Sarah_Johnson = Student.new(name:"Sarah Johnson", grade_level:"9th", project:"How a camera works")

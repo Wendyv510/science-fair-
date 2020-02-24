@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :students 
   
   def self.current_user(session) 
-    @user ||= User.find_by_id(session[:user_id])
+    @user ||= User.find_by_id(session[:user_id].to_i)
   end 
   
   def self.is_logged_in?(session) 
