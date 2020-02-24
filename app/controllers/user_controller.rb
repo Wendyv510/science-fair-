@@ -23,7 +23,7 @@ class UserController < Sinatra::Base
   end 
   
   get '/signin' do 
-    
+    @session = session 
     erb :'/user/signin' 
   end 
   
