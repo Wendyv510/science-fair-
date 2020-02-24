@@ -11,14 +11,13 @@
 <% if @student.user = User.current_user(session) %> 
 
  <h6> To edit information input changes here </h6>
-<form action="/students/<%= @student.id %>/edit" method="post">
+<form action="/students/<%= @student.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   Name:<input type="text" name="name"> 
   Grade_level:<input type="text" name="grade_level"> 
   Project:<input type="text" name="project"> 
   
   <input type="submit" value="Edit"> 
-</form> 
 
 <form action="/students/ <%= @student.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete"> 
@@ -30,7 +29,7 @@
 <br><br>
 
 
-<form action="/students" method="post"> 
+<form action="/students" method="get"> 
     <input type="submit" value="View Students">
 </form>
 
