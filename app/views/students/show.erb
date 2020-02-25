@@ -13,9 +13,9 @@
  <h6> To edit information input changes here </h6>
 <form action="/students/<%= @student.id %>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  Name:<input type="text" name="name"> 
-  Grade_level:<input type="text" name="grade_level"> 
-  Project:<input type="text" name="project"> 
+  Name:<input type="text" name="name" value="<%=@student.name%>"> 
+  Grade_level:<input type="text" name="grade_level" value="<%=@student.grade_level%>"> 
+  Project:<input type="text" name="project" value="<%=@student.project%>"> 
   
   <input type="submit" value="Edit">
 </form>

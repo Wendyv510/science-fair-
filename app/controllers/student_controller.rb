@@ -19,10 +19,14 @@ class StudentController < ApplicationController
   
   post '/students/new' do
     redirect_if_not_logged_in
+    if params[:name]=="" || params[:grade_level]=="" || params[:project]=="" 
+       redirect to '/students/new' 
+    else 
    @student = Student.find_or_create_by(:name => params[:name], :grade_level => params[:grade_level], :project => params[:project])
    @student.user = User.current_user(session) 
    @student.save 
-       redirect to "/students/#{@student.id}/edit"
+       redirect to "/students/#{@student.id}"
+    end 
   end 
   
   

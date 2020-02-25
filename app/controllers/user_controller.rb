@@ -1,6 +1,6 @@
 require './config/environment'
 
-class UserController < ApplicationContoller
+class UserController < ApplicationController
 
 
   get '/signup' do 
@@ -9,9 +9,13 @@ class UserController < ApplicationContoller
   end 
   
   post '/signup' do 
+   if params[:name] =="" || params[:email]=="" || params[:password]=="" || User.exists?(:email => params[:email])  
+      redirect to '/signup' 
+   else 
     @user = User.create(:name => params[:name], :email => params[:email], :password => params[:password])
-  
-      redirect to '/signin' 
+     @user.save 
+      redirect to '/signin'
+    end 
   end 
   
   get '/signin' do 
