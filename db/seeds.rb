@@ -2,7 +2,7 @@
 
 Mrs_Elaine_Jones = User.create(name:"Mrs. Elaine Jones", email:"ejones@scs.org", password:"glitter123") 
 John_Canon = Student.new(name:"John Canon", grade_level:"9th", project:"Gravity")
-John_Canon.user_id = Mrs_Elaine_Jones.id 
+John_Canon.user = Mrs_Elaine_Jones 
 John_Canon.save 
 Mrs_Elaine_Jones.save
 

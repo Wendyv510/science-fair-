@@ -42,15 +42,16 @@ class UserController < Sinatra::Base
       erb :'/user/failure' 
   end 
   
-  get '/logout' do 
-    if Helpers.is_logged_in?(session)
-      session.clear 
-    else 
-      redirect to '/' 
-    end 
-  end 
+  #get '/logout' do 
+   # if User.is_logged_in?(session)
+  #    session.clear 
+   # else 
+    #  redirect to '/' 
+    #end 
+#  end 
   
   post '/logout' do 
+    session.clear
     redirect to '/' 
   end 
   
