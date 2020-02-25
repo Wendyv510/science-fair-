@@ -1,13 +1,7 @@
 require './config/environment'
 
-class StudentController < Sinatra::Base
+class StudentController < ApplicationController
 
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-    enable :sessions 
-    set :session_secret, "password_security" 
-  end
   
   get '/students' do 
     @students = Student.all
@@ -35,15 +29,6 @@ class StudentController < Sinatra::Base
   get '/students/:id' do 
     @student = Student.find_by_id(params[:id]) 
        erb :'/students/show' 
-  end 
-  
-  get '/students/:id/edit' do
-       @student = Student.find_by_id(params[:id]) 
-    if @student.user == User.current_user(session)  
-       redirect to "/students/#{@student.id}"
-    else 
-      redirect to "/students" 
-    end 
   end 
   
   patch '/students/:id' do 

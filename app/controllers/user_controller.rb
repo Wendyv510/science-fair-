@@ -1,14 +1,6 @@
 require './config/environment'
 
-class UserController < Sinatra::Base
-
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-    enable :sessions 
-    set :session_secret, "password_security" 
-  end
-
+class UserController < ApplicationContoller
 
 
   get '/signup' do 
@@ -41,14 +33,6 @@ class UserController < Sinatra::Base
   get "/user/failure" do
       erb :'/user/failure' 
   end 
-  
-  #get '/logout' do 
-   # if User.is_logged_in?(session)
-  #    session.clear 
-   # else 
-    #  redirect to '/' 
-    #end 
-#  end 
   
   post '/logout' do 
     session.clear
